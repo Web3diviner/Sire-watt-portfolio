@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #ff6a00;
+  --dark-bg: #050505;
+}
+
+/* Smooth Scrolling for the whole site */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Selection Color (When users highlight text) */
+::selection {
+  background-color: var(--primary);
+  color: black;
+}
+
+/* Custom Scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+body {
+  @apply antialiased selection:bg-orange-500 selection:text-black;
+  background-color: var(--dark-bg);
+}
