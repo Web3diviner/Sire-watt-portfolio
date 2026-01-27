@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { sendEmail } from "../../lib/action";
+import { Email } from "../../lib/action";
 
 export default function BookPage() {
   const [status, setStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
@@ -11,12 +11,12 @@ export default function BookPage() {
     setIsSubmitting(true);
     setStatus(null);
 
-    const result = await sendEmail(formData);
+    const result = await Email(formData);
 
     if (result?.success) {
-      setStatus({ type: 'success', message: "Message sent! I'll get back to you shortly." });
+      setStatus({ type: 'success', message: "Message sent! I'll reach out to you shortly." });
     } else {
-      setStatus({ type: 'error', message: result?.error || "Something went wrong." });
+      setStatus({ type: 'error', message: result?.error || "Something went contact watt on X." });
     }
     setIsSubmitting(false);
   }

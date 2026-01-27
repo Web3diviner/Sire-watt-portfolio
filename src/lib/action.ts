@@ -1,11 +1,12 @@
 "use server";
 
 import { Resend } from 'resend';
+import dotenv from 'dotenv'
 
+dotenv.config()
+const resend = new Resend(process.env.resend);
 
-const resend = new Resend(process.env.re_DNNvo7nJ_9HimViMRKaQvBD3oByyXrUAX || 're_DNNvo7nJ_9HimViMRKaQvBD3oByyXrUAX');
-
-export async function sendEmail(formData: FormData) {
+export async function Email(formData: FormData) {
   // 2. Extract data from the FormData object
   // The strings in .get() must match the 'name' attribute in your HTML inputs
   const name = formData.get('name') as string;
@@ -24,7 +25,7 @@ export async function sendEmail(formData: FormData) {
       from: 'Portfolio <onboarding@resend.dev>', // Resend's default sender for unverified domains
       to: 'webdiviner25@gmail.com',            // Your personal inbox
       subject: `Inquiry: ${projectType} from ${name}`,
-      reply_to: email,                          // Allows you to click 'Reply' in your email to talk to the user
+      replyTo: email,                          // Allows you to click 'Reply' in your email to talk to the user
       text: `
         New Project Request:
         --------------------
